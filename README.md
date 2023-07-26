@@ -2,9 +2,9 @@
 
 This repo shows the three common type of customizations that users typically make in Argo CD with the OpenShift GitOps operator. These three scenarios are:
 
-1. Configuration Plugin via sidecar (plugin-sidecar folder)
-2. Configuration plugin via legacy CMP (plugin-cmp)
-3. Adding custom tooling (custom-tooling)
+1. [Configuration Plugin via sidecar](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin) (plugin-sidecar folder)
+2. [Configuration plugin via legacy CMP](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#configmap-plugin) (plugin-cmp)
+3. [Adding custom tooling](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/) (custom-tooling)
 
 All examples assume that the OpenShift GitOps operator has already been installed. Each example is self-container and will deploy a
 new Argo CD instance along with a demo application in a new namespace making it easy to clean things up after you are done and not impacting
