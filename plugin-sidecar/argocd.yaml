@@ -3,11 +3,6 @@ kind: ArgoCD
 metadata:
   name: argocd
 spec:
-  configManagementPlugins: |-
-    - name: kustomize-envvar
-      generate:
-        command: ["sh", "-c"]
-        args: ["kustomize build --enable-helm . | perl -pe 's{\\$(\\{)?(\\w+)(?(1)\\})}{$ENV{$2} // $&}ge'"]
   rbac:
     defaultPolicy: role:readonly
     policy: |
