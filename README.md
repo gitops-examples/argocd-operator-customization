@@ -34,3 +34,15 @@ you will see we define an environment variable where we want this substitution t
 ```
 
 The plugin will replace `$(APP_ENV)` with `prod` which has been defined as an environment variable in the repo server.
+
+After installing one of the plugin demos, validate that the `demo-plugin` deployment has the environment variable `APP_ENV` set to `prod`
+
+### Custom Tooling
+
+### Installation
+
+To run one of the demos, go to the directory and run:
+
+```
+oc apply -k .
+```
