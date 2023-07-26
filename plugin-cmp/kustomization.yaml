@@ -1,4 +1,4 @@
-namespace: demo-plugin-sidecar
+namespace: demo-plugin-cmp
 
 resources:
 - namespace.yaml
