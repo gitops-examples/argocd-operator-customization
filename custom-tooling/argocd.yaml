@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+spec:
+  repo:
+    volumes:
+    - name: custom-tools
+      emptyDir: {}
+    initContainers:
+    - name: download-tools
+      image: quay.io/gnunn/tools:latest
+      command: [sh, -c]
+      args:
+      - cp /usr/local/bin/kustomize /custom-tools/kustomize
+      volumeMounts:
+      - mountPath: /custom-tools
+        name: custom-tools
+    # Mount new version of kustomize over one in the image
+    volumeMounts:
+    - mountPath: /usr/local/bin/kustomize
+      name: custom-tools
+      subPath: kustomize

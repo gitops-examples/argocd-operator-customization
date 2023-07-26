@@ -39,9 +39,15 @@ After installing one of the plugin demos, validate that the `demo-plugin` deploy
 
 ### Custom Tooling
 
+Custom tooling can be used to replace the versions of the tools included in Argo CD (i.e helm, kustomize, etc) with alternative versions or
+to provide new tools.
+
+In this demo we replace kustomize with a version included in the tools container which is v5.1.0 whereas the kustomize included in OpenShift
+GitOps is v5.0.1. To confirm that the demo worked, rsh into the repo-server pod and run `kustomize version`.
+
 ### Installation
 
-To run one of the demos, go to the directory and run:
+To run one of the demos, `cd` to the demo directory you want and run:
 
 ```
 oc apply -k .

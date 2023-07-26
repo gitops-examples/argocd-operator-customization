@@ -1,0 +1,5 @@
+namespace: demo-custom-tooling
+
+resources:
+- namespace.yaml
+- argocd.yaml
