@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+spec:
+  rbac:
+    defaultPolicy: role:readonly
+    policy: |
+      g, cluster-admins, role:admin
+    scopes: '[groups]'
+  resourceTrackingMethod: annotation
+  server:
+    insecure: true
+    route:
+      enabled: true
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+  sso:
+    dex:
+      openShiftOAuth: true
+    provider: dex
+  repo:
+    env:
+      - name: APP_ENV
+        value: prod

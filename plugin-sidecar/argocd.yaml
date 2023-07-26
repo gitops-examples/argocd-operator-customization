@@ -2,8 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
 metadata:
   name: argocd
-  namespace: gitops-demo
 spec:
+  configManagementPlugins: |-
+    - name: kustomize-envvar
+      generate:
+        command: ["sh", "-c"]
+        args: ["kustomize build --enable-helm . | perl -pe 's{\\$(\\{)?(\\w+)(?(1)\\})}{$ENV{$2} // $&}ge'"]
   rbac:
     defaultPolicy: role:readonly
     policy: |

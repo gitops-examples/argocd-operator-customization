@@ -11,6 +11,8 @@ spec:
     path: demo-app
     repoURL: https://github.com/gitops-examples/argocd-operator-customization
     targetRevision: HEAD
+    plugin:
+      name: kustomize-envvar
   syncPolicy:
     automated:
       selfHeal: true

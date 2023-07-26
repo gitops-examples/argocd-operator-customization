@@ -1,7 +1,6 @@
-namespace: demo-plugin-cmp
+namespace: demo-plugin-sidecar
 
 resources:
 - namespace.yaml
 - argocd.yaml
-- setenv-cmp-plugin.yaml
 - argo-demo-app.yaml
