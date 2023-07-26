@@ -4,7 +4,7 @@ metadata:
   name: plugin-demo
 spec:
   destination:
-    namespace: demo-plugin-sidecar
+    namespace: demo-plugin-cmp
     server: https://kubernetes.default.svc
   project: default
   source:
