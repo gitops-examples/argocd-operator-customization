@@ -1,0 +1,11 @@
+commonLabels:
+  app: plugin-demo-app
+  app.kubernetes.io/component: plugin-demo
+  app.kubernetes.io/instance: plugin-demo
+  app.kubernetes.io/name: plugin-demo
+  app.kubernetes.io/part-of: plugin-demo-app
+
+resources:
+- deploy.yaml
+- service.yaml
+- route.yaml

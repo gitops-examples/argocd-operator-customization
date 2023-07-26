@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd
+  namespace: gitops-demo
+spec:
+  rbac:
+    defaultPolicy: role:readonly
+    policy: |
+      g, cluster-admins, role:admin
+    scopes: '[groups]'
+  resourceTrackingMethod: annotation
+  server:
+    insecure: true
+    route:
+      enabled: true
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+  sso:
+    dex:
+      openShiftOAuth: true
+    provider: dex
+  repo:
+    env:
+      - name: APP_ENV
+        value: prod
+    sidecarContainers:
+      - name: setenv-plugin
+        command: [/var/run/argocd/argocd-cmp-server]
+        image: quay.io/gnunn/tools:latest
+        securityContext:
+          runAsNonRoot: true
+        volumeMounts:
+          - mountPath: /var/run/argocd
+            name: var-files
+          - mountPath: /home/argocd/cmp-server/plugins
+            name: plugins
+          - mountPath: /tmp
+            name: tmp
+          - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+            subPath: plugin.yaml
+            name: setenv-cmp-plugin
+    volumes:
+      - configMap:
+          name: setenv-cmp-plugin
+        name: setenv-cmp-plugin
