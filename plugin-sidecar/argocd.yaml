@@ -29,6 +29,7 @@ spec:
       - name: setenv-plugin
         command: [/var/run/argocd/argocd-cmp-server]
         image: quay.io/gnunn/tools:latest
+        imagePullPolicy: Always
         securityContext:
           runAsNonRoot: true
         volumeMounts:

@@ -4,3 +4,4 @@ resources:
 - namespace.yaml
 - argocd.yaml
 - setenv-cmp-plugin.yaml
+- argo-demo-app.yaml

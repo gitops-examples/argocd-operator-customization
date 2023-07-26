@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plugin-demo
+  namespace: demo-plugin-sidecar
+spec:
+  destination:
+    namespace: demo-plugin-sidecar
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: demo-app
+    repoURL: https://github.com/gitops-examples/argocd-operator-customization
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
