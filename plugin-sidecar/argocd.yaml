@@ -1,8 +1,9 @@
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1beta1
 kind: ArgoCD
 metadata:
   name: argocd
 spec:
+  applicationSet: {}
   rbac:
     defaultPolicy: role:readonly
     policy: |
@@ -14,8 +15,8 @@ spec:
     route:
       enabled: true
       tls:
-        insecureEdgeTerminationPolicy: Redirect
         termination: edge
+        insecureEdgeTerminationPolicy: Redirect
   sso:
     dex:
       openShiftOAuth: true
