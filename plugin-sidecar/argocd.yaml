@@ -22,12 +22,12 @@ spec:
       openShiftOAuth: true
     provider: dex
   repo:
-    env:
-      - name: APP_ENV
-        value: prod
     sidecarContainers:
       - name: setenv-plugin
         command: [/var/run/argocd/argocd-cmp-server]
+        env:
+          - name: APP_ENV
+            value: prod
         image: quay.io/gnunn/tools:latest
         imagePullPolicy: Always
         securityContext:
